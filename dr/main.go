@@ -12,6 +12,7 @@ func main() {
 	not := flag.Bool("not", false, "Only show domains that don't resolve")
 	flag.Parse()
 
+	errorsOnly := *not
 	sc := bufio.NewScanner(os.Stdin)
 	for sc.Scan() {
 		domain := sc.Text()
@@ -20,13 +21,16 @@ func main() {
 		switch err.(type) {
 		case nil:
 		case *net.DNSError:
-			if *not {
+			if errorsOnly {
 				fmt.Println(domain)
-				return
+				continue
 			}
 		}
-		for _, aa := range answer {
-			fmt.Printf("%s => %s\n", domain, aa)
+
+		if !errorsOnly {
+			for _, aa := range answer {
+				fmt.Printf("%s => %s\n", domain, aa)
+			}
 		}
 	}
 }

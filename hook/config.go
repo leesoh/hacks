@@ -17,7 +17,7 @@ func (c *config) Load() error {
 		c.HookURL = url
 	}
 	home := os.Getenv("HOME")
-	configFile := path.Join(home, ".config", "hook", ".hook.json")
+	configFile := path.Join(home, ".config", "hook", "hook.json")
 	data, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		return err

@@ -5,9 +5,11 @@ import (
 	"crypto/tls"
 	"flag"
 	"fmt"
+	"net"
 	"os"
 	"strings"
 	"sync"
+	"time"
 )
 
 func main() {
@@ -61,9 +63,14 @@ func main() {
 // getSANs retrieves the Subject Alternate Names from the certificates found on the host
 func getSANs(host string) ([]string, error) {
 	var results []string
+	dialer := net.Dialer{
+		Timeout: 10 * time.Second,
+	}
 	host = formatDomain(host)
-	config := &tls.Config{InsecureSkipVerify: true}
-	conn, err := tls.Dial("tcp", host, config)
+	config := &tls.Config{
+		InsecureSkipVerify: true,
+	}
+	conn, err := tls.DialWithDialer(&dialer, "tcp", host, config)
 	if err != nil {
 		return results, err
 	}

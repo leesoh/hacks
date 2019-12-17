@@ -32,6 +32,6 @@ three
 ## Installation
 
 ```sh
-go get -u github.com/leesoh/untee
+go get -u github.com/leesoh/hacks/untee
 ```
 

@@ -18,7 +18,7 @@ func TestGetSubdomains(t *testing.T) {
 		{input: "www.yahoo.com", want: []string{"www"}},
 	}
 	for _, test := range tests {
-		got, err := GetSubdomains(test.input)
+		got, err := getSubdomains(test.input)
 		if err != nil {
 			log.Fatal(err)
 		}

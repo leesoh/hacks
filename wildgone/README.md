@@ -1,18 +1,22 @@
 # Wildgone
 
-Wildgone takes domains on stdin and prints the ones that resolve wildcards.
+Wildgone takes domains on stdin and prints the ones that resolve wildcards. It starts at the base domain and works backwards through each of the subdomains.
 
 ## Usage
 
+In the following example, any domain under `bar.baz.com` will resolve:
+
 ```sh
 $ cat test.txt 
-support.com
 facebook.com
 amazon.com
-www.bob.example.com.
+foo.bar.baz.com
+bar.baz.com
+baz.com
 
 $ cat test.txt | ./wildgone -r 8.8.8.8
-support.com
+bar.baz.com
+bar.baz.com
 ```
 
 ## Installation

@@ -25,7 +25,7 @@ m
 www
 ```
 
-## Intstallation
+## Installation
 
 ```sh
 $ go get -u github.com/leesoh/hacks/domtool`

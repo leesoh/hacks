@@ -1,3 +1,4 @@
+// hacky thing that I cobbled together from https://github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-server.rb
 package main
 
 import (

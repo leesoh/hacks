@@ -19,7 +19,7 @@ Useful parameters include `-c` for concurrency (default: 20) and `-proxy` to sen
 ## Installation
 
 ```sh
-go get -u github.com/leesoh/hacks/is365
+go install github.com/leesoh/hacks/is365@latest
 ```
 
 ## Thanks

@@ -16,6 +16,8 @@ realuser@nowhere.com
 
 Useful parameters include `-c` for concurrency (default: 20) and `-proxy` to send traffic via HTTP proxy.
 
+**Note**: This API will start returning false positives once the rate limit is hit. To avoid false positives, this will terminate early.
+
 ## Installation
 
 ```sh

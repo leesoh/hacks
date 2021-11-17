@@ -37,5 +37,5 @@ j.d@example.com
 ## Installation
 
 ```sh
-go install github.com/leesoh/hacks/jenny
+go install github.com/leesoh/hacks/jenny@latest
 ```

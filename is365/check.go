@@ -20,11 +20,12 @@ func checkEmail(username, proxy string) error {
 	if err != nil {
 		return err
 	}
+	// Return early to avoid false positives
+	if resp.ThrottleStatus == 1 {
+		return ErrRateLimiting{}
+	}
 	switch resp.IfExistsResult {
 	case 0:
-		if resp.ThrottleStatus == 1 {
-			return ErrRateLimiting{}
-		}
 		return nil
 	case 1:
 		return ErrUsernameDoesNotExist{}

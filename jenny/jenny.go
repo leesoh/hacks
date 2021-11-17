@@ -30,6 +30,7 @@ func createAddresses(name, suffix string) ([]string, error) {
 func processTemplates(a Address) ([]string, error) {
 	t := `{{ .First }}{{ .Last }}{{ .Suffix }}
 {{ .First }}.{{ .Last }}{{ .Suffix }}
+{{ slice .First 0 1 }}{{ .Last }}{{ .Suffix }}
 {{ slice .First 0 1 }}.{{ .Last }}{{ .Suffix }}
 {{ .First }}.{{ slice .Last 0 1 }}{{ .Suffix }}
 {{ slice .First 0 1 }}.{{ slice .Last 0 1 }}{{ .Suffix -}}`

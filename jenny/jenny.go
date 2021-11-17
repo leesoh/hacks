@@ -28,9 +28,15 @@ func createAddresses(name, suffix string) ([]string, error) {
 }
 
 func processTemplates(a Address) ([]string, error) {
+	t := `{{ .First }}{{ .Last }}{{ .Suffix }}
+{{ .First }}.{{ .Last }}{{ .Suffix }}
+{{ slice .First 0 1 }}.{{ .Last }}{{ .Suffix }}
+{{ .First }}.{{ slice .Last 0 1 }}{{ .Suffix }}
+{{ slice .First 0 1 }}.{{ slice .Last 0 1 }}{{ .Suffix -}}`
+
 	var emails []string
 	buf := new(bytes.Buffer)
-	tmpl, err := template.ParseFiles("jenny.tmpl")
+	tmpl, err := template.New("t").Parse(t)
 	if err != nil {
 		return emails, fmt.Errorf("error parsing template: %v", err)
 	}

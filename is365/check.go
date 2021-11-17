@@ -22,9 +22,12 @@ func checkEmail(username, proxy string) error {
 	}
 	switch resp.IfExistsResult {
 	case 0:
+		if resp.ThrottleStatus == 1 {
+			return ErrRateLimiting{}
+		}
 		return nil
 	case 1:
-		return fmt.Errorf("username does not exist: %v", username)
+		return ErrUsernameDoesNotExist{}
 	case 5:
 		return nil
 	case 6:

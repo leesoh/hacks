@@ -61,8 +61,8 @@ func catchFTP(c net.Conn) {
 			default:
 				c.Write([]byte("230 more data please!\n"))
 			}
+			fmt.Print(strings.Trim(string(buf.Bytes()[4:]), " "))
 		}
-		fmt.Print(strings.Trim(string(buf.Bytes()[4:]), " "))
 	}
 	c.Close()
 }
